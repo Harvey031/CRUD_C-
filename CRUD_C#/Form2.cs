@@ -17,7 +17,7 @@ namespace CRUD_C_
         }
 
      
-        private void LoadDataGridView()
+        public void LoadDataGridView()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace CRUD_C_
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM midtermdb";
+                    string query = "SELECT * FROM student_info";
                     
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
@@ -48,7 +48,7 @@ namespace CRUD_C_
         {
             DataView dv = dt.DefaultView;
 
-            dv.RowFilter = $"username LIKE '%{textBox1.Text}%'";
+            dv.RowFilter = $" [Student Name] LIKE '%{textBox1.Text}%'";
 
             dataGridView1.DataSource = dv;
         }
@@ -105,7 +105,12 @@ namespace CRUD_C_
 
         private void button7_Click(object sender, EventArgs e)
         {
+            
 
+            Form4 form4 = new Form4(this);
+            form4.Show();
+
+            this.Close();
         }
     }
 }
